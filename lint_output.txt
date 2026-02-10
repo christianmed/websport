@@ -1,0 +1,21 @@
+
+> temp-app@0.1.0 lint
+> eslint
+
+
+C:\Users\medin\Documents\Proyectos\HSP\src\components\layout\Footer.tsx
+  5:40  warning  'Mail' is defined but never used    @typescript-eslint/no-unused-vars
+  5:46  warning  'MapPin' is defined but never used  @typescript-eslint/no-unused-vars
+  5:54  warning  'Phone' is defined but never used   @typescript-eslint/no-unused-vars
+
+C:\Users\medin\Documents\Proyectos\HSP\src\components\sections\ProductCard.tsx
+  4:10  warning  'useState' is defined but never used     @typescript-eslint/no-unused-vars
+  5:8   warning  'Image' is defined but never used        @typescript-eslint/no-unused-vars
+  8:16  warning  'CardContent' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\medin\Documents\Proyectos\HSP\testimonials-example.tsx
+  116:31  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  116:43  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+Ô£û 8 problems (2 errors, 6 warnings)
+

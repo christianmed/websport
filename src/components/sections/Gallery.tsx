@@ -59,7 +59,7 @@ export function Gallery() {
         
         <div className="text-center mt-12">
            <Button variant="outline" size="lg" asChild>
-             <a href="https://t.me/TuBot" target="_blank">
+             <a href="https://t.me/TuBot" target="_blank" rel="noopener noreferrer">
                Ver catálogo completo en Telegram
              </a>
            </Button>

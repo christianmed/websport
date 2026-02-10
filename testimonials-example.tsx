@@ -113,7 +113,7 @@ export function Testimonials() {
                               ))}
                             </div>
                             <p className="text-slate-600 font-medium leading-relaxed line-clamp-4">
-                              "{t.content}"
+                              &quot;{t.content}&quot;
                             </p>
                           </div>
                           

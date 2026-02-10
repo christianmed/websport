@@ -47,7 +47,7 @@ export function Navbar() {
             </Link>
           </Button>
           <Button asChild className="gap-2">
-            <Link href="https://t.me/TuBot" target="_blank">
+            <Link href="https://t.me/TuBot" target="_blank" rel="noopener noreferrer">
               <MessageCircle className="h-4 w-4" />
               Chatbot Telegram
             </Link>
@@ -81,7 +81,7 @@ export function Navbar() {
                   </Link>
                 </Button>
                 <Button asChild className="w-full justify-start gap-2">
-                  <Link href="https://t.me/TuBot" target="_blank">
+                  <Link href="https://t.me/TuBot" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="h-4 w-4" />
                     Chatbot Telegram
                   </Link>
