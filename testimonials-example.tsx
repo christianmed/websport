@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import * as React from "react"
 import { Card, CardContent } from "@/components/ui/card"
@@ -16,46 +16,41 @@ import { cn } from "@/lib/utils"
 
 const testimonials = [
   {
-    id: 1,
-    name: "Carlos R.",
-    role: "Padre de familia",
-    content: "Excelente atención. Compré un guante para mi hijo y me asesoraron en todo momento. El envío a Valencia fue rapidísimo.",
+    name: "María González",
+    role: "Ortodoncia Invisible",
+    content: "Increíble experiencia desde el primer día. El equipo fue super atento y el tratamiento con alineadores pasó volando. Ahora sonrío con total confianza gracias a Odon.",
+    rating: 5,
+    initials: "MG"
+  },
+  {
+    name: "Carlos Ruiz",
+    role: "Diseño de Sonrisa",
+    content: "Tenía terror al dentista hasta que conocí esta clínica. La tecnología que usan elimina el dolor y el resultado de mis carillas es simplemente espectacular y natural.",
     rating: 5,
     initials: "CR"
   },
   {
-    id: 2,
-    name: "Liga Menor Baruta",
-    role: "Organización Deportiva",
-    content: "Proveedores confiables. Los bates Marucci 100% originales. Seguiremos comprando aquí por la seguridad.",
+    name: "Ana Lucía T.",
+    role: "Implantes Dentales",
+    content: "Recuperé mi calidad de vida. El procedimiento de implantes fue mucho más sencillo de lo que imaginaba. Profesionales de primera y unas instalaciones impecables.",
     rating: 5,
-    initials: "LM"
+    initials: "AL"
   },
   {
-    id: 3,
-    name: "Miguel A.",
-    role: "Pelotero Amateur",
-    content: "Buscaba unos spikes específicos y me los consiguieron bajo pedido. Muy profesionales y atentos por WhatsApp.",
-    rating: 4,
-    initials: "MA"
+    name: "Jorge Méndez",
+    role: "Blanqueamiento Láser",
+    content: "Resultados inmediatos y sin sensibilidad. Me encantó la atención personalizada y cómo me explicaron cada paso. Definitivamente la mejor clínica de la ciudad.",
+    rating: 5,
+    initials: "JM"
   },
   {
-    id: 4,
-    name: "Academia Future Stars",
-    role: "Cliente Corporativo",
-    content: "Equipamos a toda la academia con Casa del Bate. La calidad de la utilería es de Grandes Ligas. Recomendados.",
+    name: "Sofía Vergara",
+    role: "Odontopediatría",
+    content: "Llevé a mis hijos y quedaron encantados. El trato con los niños es maravilloso, tienen mucha paciencia y hacen que la visita sea divertida para ellos.",
     rating: 5,
-    initials: "AF"
-  },
-  {
-    id: 5,
-    name: "Roberto P.",
-    role: "Entrenador",
-    content: "La mejor variedad de guantes Wilson en Caracas. Precios competitivos y gran stock.",
-    rating: 5,
-    initials: "RP"
+    initials: "SV"
   }
-];
+]
 
 export function Testimonials() {
   const [api, setApi] = React.useState<CarouselApi>()
@@ -74,11 +69,11 @@ export function Testimonials() {
   }, [api])
 
   return (
-    <section id="testimonials" className="py-24 bg-slate-50 overflow-hidden">
+    <section id="testimonios" className="py-24 bg-slate-50 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Historias Reales</h2>
-          <p className="text-muted-foreground text-lg">Clientes que confiaron su juego en nosotros</p>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Historias Reales</h2>
+          <p className="text-muted-foreground text-lg">Pacientes que confiaron su sonrisa en nosotros</p>
         </div>
         
         <div className="relative max-w-5xl mx-auto">
@@ -94,15 +89,15 @@ export function Testimonials() {
             }}
             className="w-full"
           >
-            <CarouselContent className="-ml-4 py-8">
+            <CarouselContent className="-ml-4 py-8"> {/* Added vertical padding for shadow */}
               {testimonials.map((t, index) => {
                 const isActive = index === current
 
                 return (
                   <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <div className={cn(
-                      "transition-all duration-300 ease-out transform h-full p-2",
-                      isActive ? "scale-105 opacity-100 z-10" : "scale-90 opacity-50 grayscale-[0.5]"
+                      "transition-all duration-300 ease-out transform h-full p-2", // p-2 for internal spacing
+                      isActive ? "scale-105 opacity-100 z-10" : "scale-90 opacity-50 grayscale-[0.5]" // Removed blur, added grayscale for contrast
                     )}>
                       <Card className={cn(
                         "border-none h-full relative overflow-hidden transition-shadow duration-300",
@@ -124,7 +119,7 @@ export function Testimonials() {
                           
                           <div className="flex items-center gap-4 pt-4 border-t border-slate-100/50">
                             <Avatar className="h-10 w-10 border border-slate-100">
-                              <AvatarImage src={`https://ui-avatars.com/api/?name=${t.initials}&background=003366&color=fff`} alt={t.name} />
+                              <AvatarImage src={`https://placehold.co/100x100/e2e8f0/1e293b?text=${t.initials}`} alt={t.name} />
                               <AvatarFallback className="bg-primary/10 text-primary font-bold">{t.initials}</AvatarFallback>
                             </Avatar>
                             <div>
