@@ -9,7 +9,7 @@ interface CurrencyContextType {
   currency: Currency;
   exchangeRate: number;
   toggleCurrency: () => void;
-  convertPrice: (priceUSD: number) => string;
+  formatPrice: (priceUSD: number) => string;
   isLoading: boolean;
 }
 
@@ -56,7 +56,7 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('hsp_currency', newCurrency);
   };
 
-  const convertPrice = (priceUSD: number) => {
+  const formatPrice = (priceUSD: number) => {
     if (currency === 'USD') {
       return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(priceUSD);
     } else {
@@ -66,7 +66,7 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <CurrencyContext.Provider value={{ currency, exchangeRate, toggleCurrency, convertPrice, isLoading }}>
+    <CurrencyContext.Provider value={{ currency, exchangeRate, toggleCurrency, formatPrice, isLoading }}>
       {children}
     </CurrencyContext.Provider>
   );

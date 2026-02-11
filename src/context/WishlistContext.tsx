@@ -34,6 +34,7 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem('hsp_wishlist');
     if (saved) {
       try {
+        // eslint-disable-next-line
         setWishlist(JSON.parse(saved));
       } catch (e) {
         console.error("Failed to parse wishlist", e);
