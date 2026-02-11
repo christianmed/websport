@@ -6,7 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from '@/components/ui/dialog';
-import { MessageCircle, Check } from 'lucide-react';
+import { MessageCircle, Check, Heart } from 'lucide-react';
+import { useWishlist } from '@/context/WishlistContext';
+import { MouseEvent } from 'react';
 
 interface ProductCardProps {
   product: Product;
@@ -14,11 +16,30 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const telegramUrl = `https://t.me/TuBot?start=consultar_${product.id}`;
+  const { isInWishlist, toggleWishlist } = useWishlist();
+  const isLiked = isInWishlist(product.id);
+
+  const handleWishlistToggle = (e: MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    toggleWishlist(product);
+  };
 
   return (
     <Dialog>
-      <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 group border-border/50 hover:border-primary/50 hover:-translate-y-2 cursor-pointer bg-card/50 backdrop-blur-sm">
+      <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 group border-border/50 hover:border-primary/50 hover:-translate-y-2 cursor-pointer bg-card/50 backdrop-blur-sm relative">
         <div className="relative aspect-square bg-muted overflow-hidden">
+           {/* Wishlist Button */}
+           <Button
+             variant="ghost"
+             size="icon"
+             className="absolute top-2 right-2 z-10 bg-white/50 backdrop-blur-sm hover:bg-white/80 rounded-full"
+             onClick={handleWishlistToggle}
+             title={isLiked ? "Eliminar de favoritos" : "Agregar a favoritos"}
+           >
+             <Heart className={`h-5 w-5 ${isLiked ? "fill-red-500 text-red-500" : "text-gray-600"}`} />
+           </Button>
+
            {/* Placeholder for image - using gradient for now if image fails or generic */}
            <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-muted-foreground group-hover:scale-105 transition-transform duration-500">
              <span className="text-4xl">⚾</span>
