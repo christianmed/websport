@@ -71,7 +71,7 @@ export function Navbar() {
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild title="Chatbot Telegram">
-              <Link href="https://t.me/TuBot" target="_blank" rel="noopener noreferrer">
+              <Link href="https://t.me/hs27_info_bot" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-5 w-5" />
                 <span className="sr-only">Chatbot Telegram</span>
               </Link>

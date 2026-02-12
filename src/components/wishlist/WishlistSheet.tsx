@@ -40,11 +40,11 @@ export function WishlistSheet({ open, onOpenChange }: WishlistSheetProps) {
     let message = `👋 ¡Hola! Estoy interesado en los siguientes productos de Home Sports 27:\n\n`;
     
     wishlist.forEach((item, index) => {
-      message += `${index + 1}. *${item.name}* - ${item.price}\n`;
+      message += `${index + 1}. **${item.name}** - ${item.price}\n`;
       message += `   (ID: ${item.id})\n`;
     });
 
-    message += `\n💰 *Total Estimado: $${totalUSD.toFixed(2)} USD*`;
+    message += `\n💰 **Total Estimado: $${totalUSD.toFixed(2)} USD**`;
     
     if (currency === 'VES') {
        const totalVES = totalUSD * exchangeRate;
@@ -55,7 +55,7 @@ export function WishlistSheet({ open, onOpenChange }: WishlistSheetProps) {
     message += `\nQuedo atento a su respuesta para concretar. Gracias.`;
     
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://t.me/TuBot?text=${encodedMessage}`, '_blank');
+    window.open(`https://t.me/hs27_info_bot?text=${encodedMessage}`, '_blank');
   };
 
   return (

@@ -88,7 +88,7 @@ export function GalleryClient({ products }: GalleryClientProps) {
       
       <div className="text-center mt-12">
          <Button variant="outline" size="lg" asChild>
-           <a href="https://t.me/TuBot" target="_blank" rel="noopener noreferrer">
+           <a href="https://t.me/hs27_info_bot" target="_blank" rel="noopener noreferrer">
              Ver catálogo completo en Telegram
            </a>
          </Button>

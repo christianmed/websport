@@ -53,7 +53,7 @@ export function Hero() {
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="h-12 px-8 text-lg w-full sm:w-auto border-white/30 bg-white/5 text-white hover:bg-white/20 hover:text-white backdrop-blur-sm" asChild>
-              <Link href="https://t.me/TuBot" target="_blank" rel="noopener noreferrer">
+              <Link href="https://t.me/hs27_info_bot" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Chatbot Telegram
               </Link>
