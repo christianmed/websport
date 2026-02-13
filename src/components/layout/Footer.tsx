@@ -2,26 +2,48 @@
 'use client';
 
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
+import { toast } from 'sonner';
+import { subscribeToNewsletter } from '@/app/actions';
 
 export function Footer() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  // ... (inside component)
+
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if(email && name) {
-        // Mock sub
+    if (!email || !name) return;
+
+    setIsLoading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+
+      const result = await subscribeToNewsletter(null, formData);
+
+      if (result?.success) {
         setIsSubscribed(true);
-        setTimeout(() => {
-            setEmail('');
-            setName('');
-            setIsSubscribed(false);
-        }, 3000);
+        // toast.success(result.message); // Removed for cleaner UX
+        setEmail('');
+        setName('');
+        setTimeout(() => setIsSubscribed(false), 5000);
+      } else {
+        toast.error(result?.message || "Hubo un problema al suscribirte.");
+      }
+    } catch (error) {
+      console.error("Newsletter Error:", error);
+      toast.error("Error de conexión. Intenta más tarde.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -95,8 +117,8 @@ export function Footer() {
                         className="bg-white/5 border-white/10 text-white placeholder:text-white/40 h-9"
                         required
                     />
-                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-9">
-                        Suscribirme
+                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-9" disabled={isLoading}>
+                        {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Suscribirme"}
                     </Button>
                 </form>
             )}
